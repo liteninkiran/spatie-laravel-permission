@@ -35,13 +35,13 @@
 
                 <hr class="mt-5">
 
-                <!-- ??? -->
+                <!-- Permissions -->
                 <div class="mt-6 p-2 bg-slate-100">
 
                     <!-- Heading -->
                     <h2 class="text-2xl font-semibold">Role Permissions</h2>
 
-                    <!-- ??? -->
+                    <!-- Associated Permissions (click to remove) -->
                     <div class="flex space-x-2 mt-4 p-2">
                         @if ($role->permissions)
                             @foreach ($role->permissions as $role_permission)
@@ -54,7 +54,7 @@
                         @endif
                     </div>
 
-                    <!-- ??? -->
+                    <!-- All Permissions -->
                     <div class="max-w-xl mt-6">
                         <form method="POST" action="{{ route('admin.roles.permissions', $role->id) }}">
                             @csrf
