@@ -19,6 +19,11 @@ class PermissionController extends Controller
         return view('admin.permissions.create');
     }
 
+    public function edit(Permission $permission)
+    {
+        return view('admin.permissions.edit', compact('permission'));
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -27,6 +32,18 @@ class PermissionController extends Controller
         ]);
 
         Permission::create($validated);
+
+        return to_route('admin.permissions.index');
+    }
+
+    public function update(Request $request, Permission $permission)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'min:3'],
+            'guard_name' => ['required', 'min:3'],
+        ]);
+
+        $permission->update($validated);
 
         return to_route('admin.permissions.index');
     }
