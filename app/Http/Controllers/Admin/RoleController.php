@@ -10,7 +10,7 @@ class RoleController extends Controller
 {
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::whereNotIn('name', ['admin'])->orderBy('name')->get();
         return view('admin.roles.index', compact('roles'));
     }
 
@@ -32,7 +32,7 @@ class RoleController extends Controller
 
         Role::create($validated);
 
-        return to_route('admin.roles.index');
+        return to_route('admin.roles.index')->with('message', 'Role created successfully');
     }
 
     public function update(Request $request, Role $role)
@@ -43,6 +43,12 @@ class RoleController extends Controller
 
         $role->update($validated);
 
-        return to_route('admin.roles.index');
+        return to_route('admin.roles.index')->with('message', 'Role updated successfully');
+    }
+
+    public function destroy(Role $role)
+    {
+        $role->delete();
+        return back()->with('message', 'Role deleted successfully');
     }
 }
