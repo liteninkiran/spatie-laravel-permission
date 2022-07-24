@@ -28,7 +28,6 @@ class PermissionController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'min:3'],
-            'guard_name' => ['required', 'min:3'],
         ]);
 
         Permission::create($validated);
@@ -40,7 +39,6 @@ class PermissionController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'min:3'],
-            'guard_name' => ['required', 'min:3'],
         ]);
 
         $permission->update($validated);

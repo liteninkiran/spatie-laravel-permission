@@ -9,6 +9,8 @@
                     <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
                         <form method="POST" action="{{ route('admin.roles.store') }}">
                             @csrf
+
+                            <!-- Role Name -->
                             <div class="sm:col-span-6">
                                 <label for="name" class="block text-sm font-medium text-gray-700"> Role name </label>
                                 <div class="mt-1">
@@ -16,6 +18,8 @@
                                 </div>
                                 @error('name') <span class="text-red-400 text-sm">{{ $message }}</span> @enderror
                             </div>
+
+                            <!-- Submit Button -->
                             <div class="sm:col-span-6 pt-5">
                                 <button type="submit" class="px-4 py-2 bg-green-500 hover:bg-green-700 rounded-md text-white">Create</button>
                             </div>
